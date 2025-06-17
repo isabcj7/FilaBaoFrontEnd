@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minha Conta</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+    body {
+      background: url('../assets/ImagemCadasro.png') no-repeat center center fixed;
+      background-size: cover;
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #333;
+    }
+    .logo {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      width: 120px;
+      src: url('../assets/Logo2 (1).png');
+    }
+    .container {
+      background: #F5E8C7;
+      padding: 20px;
+      border-radius: 10px;
+      width: 100%;
+      max-width: 350px;
+      text-align: center;
+      position: relative;
+      margin: 0 auto;
+    }
+    h1 {
+      color: #D32F2F;
+      font-size: 24px;
+      margin-bottom: 30px;
+    }
+    h2 {
+      color: #333;
+      font-size: 18px;
+      margin: 20px 0 10px;
+    }
+    .info {
+      margin-bottom: 15px;
+      text-align: left;
+    }
+    .info label {
+      color: #333;
+      font-size: 16px;
+      margin-bottom: 5px;
+      display: block;
+    }
+    .info span {
+      color: #555;
+      font-size: 14px;
+    }
+    .voucher-item {
+      background: #F5E8C7;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      font-size: 12px;
+      text-align: left;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #FF5722; /* Cor ajustada para Sair */
+      color: white;
+      border: none;
+      border-radius: 20px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+    button:hover {
+      background: #E64A19;
+    }
+    .error {
+      color: red;
+      font-size: 12px;
+      margin-top: 10px;
+    }
+    .link {
+      margin-top: 15px;
+      color: #D32F2F;
+      font-size: 12px;
+      cursor: pointer;
+    }
+    .user-icon {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 40px;
+      height: 40px;
+      background: #F5E8C7;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .user-icon::before {
+      content: '';
+      width: 20px;
+      height: 20px;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23D32F2F"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>') no-repeat center;
+      background-size: contain;
+    }
+    @media (max-width: 400px) {
+      .container {
+        margin: 10px;
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <img src="../assets/Logo2 (1).png" alt="Filabão Logo" class="logo">
+  <div class="container">
+    <h1>MINHA CONTA</h1>
+    <div id="userInfo">
+      <div class="info">
+        <label>Nome:</label>
+        <span id="name"></span>
+      </div>
+      <div class="info">
+        <label>CPF:</label>
+        <span id="cpf"></span>
+      </div>
+      <div class="info">
+        <label>E-mail:</label>
+        <span id="email"></span>
+      </div>
+    </div>
+    <h2>Meus Vouchers</h2>
+    <div id="voucherList"></div>
+    <button onclick="logout()">SAIR</button>
+    <div class="link" onclick="window.location.href='voucher.html'">GERAR VOUCHER</div>
+    <div id="errorMessage" class="error"></div>
+    <div class="user-icon"></div>
+  </div>
+  <script>
+    const userInfo = document.getElementById('userInfo');
+    const nameSpan = document.getElementById('name');
+    const cpfSpan = document.getElementById('cpf');
+    const emailSpan = document.getElementById('email');
+    const voucherList = document.getElementById('voucherList');
+    const errorMessage = document.getElementById('errorMessage');
+
+    function loadUser() {
+      try {
+        const user = JSON.parse(localStorage.getItem('user'));
+        console.log('Usuário carregado:', user);
+        if (!user) {
+          errorMessage.textContent = 'Usuário não logado. Redirecionando para login...';
+          setTimeout(() => window.location.href = 'login.html', 2000);
+          return;
+        }
+        nameSpan.textContent = user.name;
+        cpfSpan.textContent = user.cpf;
+        emailSpan.textContent = user.email;
+        loadVouchers(user.id);
+      } catch (e) {
+        console.error('Erro ao carregar usuário:', e.message);
+        errorMessage.textContent = 'Erro ao carregar dados. Redirecionando para login...';
+        setTimeout(() => window.location.href = 'login.html', 2000);
+      }
+    }
+
+    async function loadVouchers(userId) {
+      try {
+        console.log('Buscando vouchers para userId:', userId);
+        const response = await fetch(`http://localhost:8080/api/users/${userId}/vouchers`, {
+          method: 'GET',
+          headers: { 'Content-Type': 'application/json' }
+        });
+        console.log('Resposta recebida:', response.status, response.statusText);
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+        }
+        const vouchers = await response.json();
+        console.log('Vouchers recebidos:', vouchers);
+        voucherList.innerHTML = '';
+        if (vouchers.length === 0) {
+          voucherList.textContent = 'Nenhum voucher encontrado.';
+        } else {
+          vouchers.forEach(voucher => {
+            const voucherItem = document.createElement('div');
+            voucherItem.className = 'voucher-item';
+            voucherItem.textContent = `Código: ${voucher.code} (Criado em: ${new Date(voucher.createdAt).toLocaleString()})`;
+            voucherList.appendChild(voucherItem);
+          });
+        }
+      } catch (e) {
+        console.error('Erro ao buscar vouchers:', e.message);
+        voucherList.textContent = 'Erro ao carregar vouchers.';
+      }
+    }
+
+    function logout() {
+      localStorage.removeItem('user');
+      console.log('Logout realizado');
+      window.location.href = 'login.html';
+    }
+
+    loadUser();
+  </script>
+</body>
+</html>

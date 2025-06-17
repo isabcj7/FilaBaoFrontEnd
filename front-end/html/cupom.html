@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cupons</title>
+    <link rel="stylesheet" href="../css/cupom.css">
+</head>
+<body>
+
+    <div class="container">
+    <div class="nav">
+  <div class="logo"><img src="../assets/Logo2 (1).png" alt="Logo"></div>
+  <button class="hamburger">☰</button>
+  <div class="menu-mobile">
+    <ul>
+      <li><a href="">INÍCIO</a></li>
+      <li><a href="">SOBRE NÓS</a></li>
+      <li><a href="">JOGOS</a></li>
+      <li><a href="">CUPONS</a></li>
+    </ul>
+  </div>
+  <div class="links">
+    <ul>
+      <li><a href="">INÍCIO</a></li>
+      <li><a href="">SOBRE NÓS</a></li>
+      <li><a href="">JOGOS</a></li>
+      <li><a href="">CUPONS</a></li>
+    </ul>
+    <img src="../assets/perfil.png" alt="Perfil">
+  </div>
+</div>
+
+    <h1>CUPONS</h1>
+    </div>
+
+        <div class="tickets">
+      <img src="../assets/Cupom15.png" alt="Cupom 15%" data-desconto="15" class="cupom">
+      <img src="../assets/Cupom20.png" alt="Cupom 20%" data-desconto="20" class="cupom">
+      <img src="../assets/Cupom40.png" alt="Cupom 40%" data-desconto="40" class="cupom">
+      <img src="../assets/Cupom50.png" alt="Cupom 50%" data-desconto="50" class="cupom">
+      <img src="../assets/Cupom60.png" alt="Cupom 60%" data-desconto="60" class="cupom">
+    </div>
+
+    </div>
+    
+
+    <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const hamburger = document.querySelector('.hamburger');
+    const menuMobile = document.querySelector('.menu-mobile');
+
+    hamburger.addEventListener('click', function () {
+      menuMobile.classList.toggle('active');
+      hamburger.textContent = menuMobile.classList.contains('active') ? '✕' : '☰';
+    });
+
+    document.querySelectorAll('.menu-mobile a').forEach(link => {
+      link.addEventListener('click', () => {
+        menuMobile.classList.remove('active');
+        hamburger.textContent = '☰';
+      });
+    });
+  });
+</script>
+<script src="../js/cupom.js"></script>
+
+</body>
+</html>

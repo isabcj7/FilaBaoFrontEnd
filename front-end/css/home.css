@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #4f6c7f;
+  font-family: "Nunito", sans-serif;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  color: white;
+  flex-wrap: nowrap;
+}
+
+.logo img {
+  width: 280px;
+  height: 70px;
+  border-radius: 40px;
+}
+
+.links ul,
+.menu-mobile ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.links ul {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.links ul li a,
+.menu-mobile ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 700;
+  transition: 0.3s;
+}
+
+.links ul li a:hover,
+.menu-mobile ul li a:hover {
+  color: #263d4c;
+}
+
+.menu-mobile {
+  position: fixed;
+  top: 0;
+  right: -300px;
+  width: 300px;
+  height: 100vh;
+  background-color: #4f6c7f;
+  padding-top: 100px;
+  transition: right 0.3s ease;
+  z-index: 999;
+}
+
+.menu-mobile.active {
+  right: 0;
+}
+
+.menu-mobile ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.menu-mobile ul li a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+}
+
+.hamburger {
+  display: none;
+  font-size: 2.5rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .links {
+    display: none;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .logo img {
+    width: 180px;
+    height: auto;
+  }
+
+  .nav {
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+/* Container 3D */
+#container3D {
+  cursor: grab;
+}
+
+#container3D:active {
+  cursor: grabbing;
+}

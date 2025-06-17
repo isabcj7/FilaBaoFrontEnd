@@ -1,0 +1,130 @@
+:root {
+  --bg-beige: #f6ead5;
+  --btn-orange: #f4a43e;
+  --text-light: #ffffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: var(--bg-beige);
+  color: var(--text-light);
+}
+
+.hero {
+  height: 50vh;                 
+  position: relative;
+  background: url("background.jpg") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+}
+
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: url(../assets/ImagemEntrada.png); 
+}
+
+/* Navegação / avatar */
+.hero__nav {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  z-index: 2;                   
+}
+
+.avatar {
+  width: 64px;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4); 
+  padding: 12px;
+}
+
+/* Conteúdo principal (texto + botão) */
+.hero__content {
+  z-index: 2;                  
+  margin-left: 5%;
+  margin-top: 22%;
+}
+
+.hero__content h1 {
+  font-size: 1.2rem;            
+  line-height: 1.3;
+  font-weight: 400;            
+  letter-spacing: 2px;          
+  margin-bottom: 0.5rem;    
+}
+
+.hero__content p {
+  font-size: 0.9rem;
+  color: #eeeeee;              
+  margin-bottom: 1.5rem;
+}
+
+.btn {
+  background: var(--btn-orange);
+  color: var(--text-light);
+  padding: 0.5rem 1.8rem;       
+  border: none;
+  border-radius: 999px;        
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+.btn:hover {
+  transform: scale(1.05);      
+}
+
+/* Círculo central sobreposto */
+.logo-circle {
+  width: 480px;
+  height: 480px;
+  border-radius: 50%;
+  background: var(--bg-beige);
+  position: absolute;
+  left: 50%;
+  bottom: -240px;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  width: 70%;
+  max-width: 300px;
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+  .logo-circle {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    top: 65px;
+  }
+
+  .hero{
+    height: 70vh;
+  }
+
+  .hero__content{
+    position: absolute;
+    top: 300px;
+  }
+
+  .hero__content h1 {
+    font-size: 1rem;
+  }
+}

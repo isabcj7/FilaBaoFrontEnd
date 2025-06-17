@@ -1,0 +1,99 @@
+/* Fonte e reset */
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: url('../assets/fundo.png') no-repeat center center fixed;
+  background-size: cover;
+  position: relative;  /* Necessário para posicionar a logo */
+  height: 100vh;
+}
+
+/* Logo no canto inferior esquerdo */
+.logo {
+  height: 50px;
+  width: 200px;
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+  background-color: white;
+  border-radius: 30px;
+}
+
+/* Container central do formulário */
+.form-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  color: white;
+}
+
+/* Wrapper para cada campo de entrada */
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 280px;
+}
+
+/* Rótulos */
+label {
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+/* Campos de entrada */
+input {
+  padding: 10px;
+  border: none;
+  border-radius: 18px;
+  background-color: #f7a53c;
+  color: white;
+  outline: none;
+  font-size: 1rem;
+}
+
+input::placeholder {
+  color: white;
+}
+
+/* Botão */
+button {
+  padding: 10px;
+  width: 280px;
+  border: none;
+  border-radius: 18px;
+  background-color: #ff4e30;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+/* Mensagem de resposta */
+#responseMessage {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.error {
+  color: #ffcccc;
+}
+
+.success {
+  color: #ccffcc;
+}
+
+/* Link de login */
+.switch {
+  margin-top: 20px;
+  text-decoration: underline;
+  cursor: pointer;
+  color: white;
+}

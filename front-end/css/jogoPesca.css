@@ -1,0 +1,101 @@
+.fishing-game-container {
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  max-width: 500px;
+  margin: 20px auto;
+  background: #a7d8de; /* cor água */
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 0 10px #619da7;
+}
+
+h1 {
+  margin-bottom: 15px;
+  color: #044a5b;
+}
+
+.pond {
+  position: relative;
+  width: 100%;
+  height: 100px;
+  background: linear-gradient(to bottom, #3b99d8, #0d3b66);
+  border-radius: 12px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.fish {
+  position: absolute;
+  top: 40%;
+  font-size: 48px;
+  transition: left 0.05s linear;
+  user-select: none;
+}
+
+.catch-zone {
+  position: absolute;
+  top: 0;
+  left: 40%;
+  width: 20%;
+  height: 100%;
+  border: 2px dashed #ffec42;
+  background-color: rgba(255, 236, 66, 0.3);
+  pointer-events: none;
+  border-radius: 8px;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+button {
+  padding: 12px 24px;
+  font-size: 1.1rem;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  background-color: #f7941d;
+  color: white;
+  font-weight: 600;
+  box-shadow: 0 3px 6px #d17e0b;
+  transition: background-color 0.3s ease;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+button:hover:not(:disabled) {
+  background-color: #d67f0b;
+}
+
+.score {
+  font-size: 1.2rem;
+  color: #044a5b;
+  font-weight: 700;
+}
+
+.game-over {
+  margin-top: 20px;
+  background-color: #ffd54f;
+  padding: 15px;
+  border-radius: 12px;
+  color: #5d4037;
+  font-weight: 700;
+  box-shadow: 0 0 8px #b8860b;
+}
+
+.game-over button {
+  margin-top: 10px;
+  background-color: #5d4037;
+  color: white;
+}
+
+.game-over button:hover {
+  background-color: #3e2723;
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Jogos de festa junina - Filabão" />
+  <title>Jogos - Filabão</title>
+  <link rel="stylesheet" href="../css/jogos.css" />
+</head>
+<body>
+  <!-- Navbar -->
+  <div class="container">
+  <div class="nav">
+    <div class="logo"><a href="../html/home.html"><img src="../assets/Logo2 (1).png" alt=""></a></div>
+    <button class="hamburger">☰</button>
+    <div class="menu-mobile">
+      <ul>
+        <li><a href="../html/home.html">HOME</a></li>
+        <li><a href="../html/sobreNos.html">SOBRE NÓS</a></li>
+        <li><a href="../html/jogos.html">JOGOS</a></li>
+        <li><a href="../html/cupom.html">CUPONS</a></li>
+      </ul>
+    </div>
+    <div class="links">
+      <ul>
+        <li><a href="../html/home.html">HOME</a></li>
+        <li><a href="../html/sobreNos.html">SOBRE NÓS</a></li>
+        <li><a href="../html/jogos.html">JOGOS</a></li>
+        <li><a href="../html/cupom.html">CUPONS</a></li>
+      </ul>
+    </div>
+  </div>
+  <h1 class="title">JOGOS</h1>
+</div>
+
+  <!-- Jogos Section -->
+  <section class="section">
+    <ul class="grid">
+      <li class="item">
+        <button class="btn" aria-label="Cupom 20% Off">
+          <a href="../html/cupom.html"><img src="../assets/Cupom15.png" alt="Cupom 20% de desconto" /></a>
+        </button>
+        <span class="caption">Cupom</span>
+      </li>
+      <li class="item">
+        <button class="btn" aria-label="Fogueira">
+          <a href="../html/jogoPulaFogueira.html"><img src="../assets/Fogueira.png" alt="Fogueira" /></a>
+        </button>
+        <span class="caption">Fogueira</span>
+      </li>
+      <li class="item">
+        <button class="btn" aria-label="Memória">
+          <a href="../html/jogoMemoria.html"><img src="../assets/JogoMemoria.png" alt="Memória" /></a>
+        </button>
+        <span class="caption">Memória</span>
+      </li>
+      <li class="item">
+        <button class="btn" aria-label="Pesca">
+          <a href="../html/jogoPesca.html"><img src="../assets/Pesca.png" alt="Pesca" /></a>
+        </button>
+        <span class="caption">Pesca</span>
+      </li>
+      <li class="item banner">
+        <a href=".."></a><img src="../assets/ImagemEntrada.png" alt="Bandeirinhas" class="banner-img" />
+      </li>
+    </ul>
+  </section>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.querySelector('.menu-mobile');
+      menu.classList.toggle('active');
+    }
+  </script>
+</body>
+</html>

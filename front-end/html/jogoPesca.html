@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jogo de Pesca</title>
+  <link rel="stylesheet" href="../css/jogoPesca.css">
+</head>
+<body>
+  <div class="fishing-game-container">
+    <h1>🎣 Jogo de Pesca</h1>
+    <div class="pond">
+      <div class="fish" aria-label="Peixe se movendo">🐟</div>
+      <div class="catch-zone" title="Zona de captura"></div>
+    </div>
+
+    <div class="controls">
+      <button id="catchBtn">Lançar Linha!</button>
+      <div class="score">Pontos: <span id="score">0</span></div>
+    </div>
+
+    <div class="game-over" id="gameOverMessage" style="display:none;">
+      <h2>Parabéns! Você pescou 500 pontos! 🏆</h2>
+      <button id="resetBtn">Jogar Novamente</button>
+    </div>
+  </div>
+
+  <script src="../js/jogoPesca.js"></script>
+</body>
+</html>

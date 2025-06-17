@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fogueira 3D</title>
+  <link rel="stylesheet" href="../css/home.css" />
+</head>
+<body>
+  <header id="home">
+  <nav class="nav">
+  <div class="logo"><a href="../html/index.html"><img src="../assets/Logo2 (1).png" alt="Logo Filabão"></a></div>
+  <button class="hamburger">☰</button>
+  
+  <!-- Menu desktop -->
+  <div class="links">
+    <ul>
+      <li><a href="../html/home.html">HOME</a></li>
+      <li><a href="../html/sobreNos.html">SOBRE NÓS</a></li>
+      <li><a href="../html/jogos.html">JOGOS</a></li>
+      <li><a href="../html/voucher.html">VOUCHER</a></li>
+      <li><a href="../html/login.html">LOGIN</a></li>
+    </ul>
+  </div>
+
+  <!-- Menu mobile -->
+  <div class="menu-mobile">
+    <ul>
+      <li><a href="../html/home.html">HOME</a></li>
+      <li><a href="../html/sobreNos.html">SOBRE NÓS</a></li>
+      <li><a href="../html/jogos.html">JOGOS</a></li>
+      <li><a href="../html/voucher.html">VOUCHER</a></li>
+      <li><a href="../html/login.html">LOGIN</a></li>
+    </ul>
+  </div>
+</nav>
+
+</header>
+
+  <main>
+    <!-- Esse container receberá o <canvas> do Three.js -->
+    <div id="container3D" style="width: 100vw; height: 100vh;"></div>
+  </main>
+
+  <!-- Carrega o script como módulo ES -->
+   <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const hamburger = document.querySelector('.hamburger');
+    const menuMobile = document.querySelector('.menu-mobile');
+
+    hamburger.addEventListener('click', function () {
+      menuMobile.classList.toggle('active');
+      hamburger.textContent = menuMobile.classList.contains('active') ? '✕' : '☰';
+    });
+
+    // Fecha o menu ao clicar em um link
+    document.querySelectorAll('.menu-mobile a').forEach(link => {
+      link.addEventListener('click', () => {
+        menuMobile.classList.remove('active');
+        hamburger.textContent = '☰';
+      });
+    });
+  });
+</script>
+
+  <script type="module" src="../js/home.js"></script>
+  
+</body>
+
+</html>

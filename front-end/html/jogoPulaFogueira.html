@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jogo do Caipira</title>
+  <link rel="stylesheet" href="../css/jogoPulaFogueira.css" />
+</head>
+<body>
+  <div class="game-container" id="game">
+    <div id="dino" class="dino">
+      <img id="dino-img" src="../assets/caipira1.png" alt="Caipira1" />
+    </div>
+    <div id="score" class="score">Score: 0</div>
+    <div id="game-over" class="game-over hidden">
+      <h1 class="game-over-title">Game Over</h1>
+      <button class="retry-button" onclick="restartGame()">Tentar de novo</button>
+    </div>
+  </div>
+
+  <script src="../js/jogoPulaFogueira.js"></script>
+</body>
+</html>

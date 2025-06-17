@@ -1,0 +1,11 @@
+Model Information:
+* title:	Campfire
+* source:	https://sketchfab.com/3d-models/campfire-30814252c0714caeab8cfdf581967d87
+* author:	Denis Shikunov (https://sketchfab.com/felo3113)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Campfire" (https://sketchfab.com/3d-models/campfire-30814252c0714caeab8cfdf581967d87) by Denis Shikunov (https://sketchfab.com/felo3113) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

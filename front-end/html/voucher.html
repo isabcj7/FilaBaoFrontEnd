@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gerar Voucher</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+    body {
+      background: url('../assets/ImagemCadasro.png') no-repeat center center fixed;
+      background-size: cover;
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #333;
+    }
+    .logo {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      width: 120px;
+      src: url('../assets/Logo2 (1).png');
+    }
+    .container {
+      background: #F5E8C7;
+      padding: 20px;
+      border-radius: 10px;
+      width: 100%;
+      max-width: 350px;
+      text-align: center;
+      position: relative;
+      margin: 0 auto;
+    }
+    h1 {
+      color: #D32F2F;
+      font-size: 24px;
+      margin-bottom: 30px;
+    }
+    .input-wrapper {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+    label {
+      color: #333;
+      font-size: 16px;
+      margin-bottom: 5px;
+      display: block;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      background: #F5A623;
+      color: #333;
+      font-size: 14px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #FF5722; /* Cor ajustada para Gerar */
+      color: white;
+      border: none;
+      border-radius: 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #E64A19;
+    }
+    #responseMessage {
+      margin-top: 10px;
+      font-size: 12px;
+    }
+    .success {
+      color: green;
+    }
+    .error {
+      color: red;
+    }
+    .switch {
+      margin-top: 15px;
+      color: #D32F2F;
+      font-size: 12px;
+      cursor: pointer;
+    }
+    .user-icon {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 40px;
+      height: 40px;
+      background: #F5E8C7;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .user-icon::before {
+      content: '';
+      width: 20px;
+      height: 20px;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23D32F2F"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>') no-repeat center;
+      background-size: contain;
+    }
+    @media (max-width: 400px) {
+      .container {
+        margin: 10px;
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <img src="../assets/Logo2 (1).png" alt="Filabão Logo" class="logo">
+  <div class="container">
+    <h1>GERAR VOUCHER</h1>
+    <form id="voucherForm">
+      <div class="input-wrapper">
+        <label for="cpf">CPF:</label>
+        <input id="cpf" type="text" required placeholder="12345678909">
+      </div>
+      <button type="submit">GERAR</button>
+      <div id="responseMessage"></div>
+    </form>
+    <div class="switch" onclick="window.location.href='login.html'">Já tem conta? Login</div>
+    <div class="user-icon"></div>
+  </div>
+  <script>
+    const form = document.getElementById('voucherForm');
+    const messageDiv = document.getElementById('responseMessage');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const rawCpf = document.getElementById('cpf').value.trim();
+      console.log('CPF bruto:', rawCpf);
+      const cpf = rawCpf.replace(/[^\d]/g, '');
+      console.log('CPF processado:', cpf);
+      if (!cpf || cpf.length !== 11 || !/^\d{11}$/.test(cpf)) {
+        console.log('Validação falhou: CPF inválido');
+        messageDiv.className = 'error';
+        messageDiv.textContent = 'CPF inválido (11 dígitos numéricos).';
+        return;
+      }
+      const requestBody = { cpf };
+      console.log('Corpo da requisição:', JSON.stringify(requestBody));
+      try {
+        console.log('Iniciando fetch para http://localhost:8080/api/vouchers');
+        const response = await fetch('http://localhost:8080/api/vouchers', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(requestBody),
+        });
+        console.log('Resposta recebida:', response.status, response.statusText);
+        if (!response.ok) {
+          console.error('Erro HTTP:', response.status, response.statusText);
+          throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+        }
+        const result = await response.json();
+        console.log('Resultado JSON:', result);
+        messageDiv.className = result.success ? 'success' : 'error';
+        messageDiv.textContent = result.message + (result.code ? ` Código: ${result.code}` : '');
+      } catch (error) {
+        console.error('Erro no fetch:', error.message);
+        messageDiv.className = 'error';
+        messageDiv.textContent = `Erro: ${error.message}`;
+      }
+    });
+  </script>
+</body>
+</html>

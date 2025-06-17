@@ -1,0 +1,106 @@
+/* --- Reset & fontes --- */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f6ead5;
+}
+
+/* --- Seção azul de topo --- */
+.blue-section {
+  position: relative;
+  background: url(../assets/ImagemSobreNos.png);
+  height: 30vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;   /* espaço interno entre header e título */
+  align-items: center;              /* centraliza tudo na horizontal */
+  padding: 0 20px;
+  color: #fff;
+  overflow: hidden;
+}
+
+.blue-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 50, 80, 0.55); /* sobreposição azul‑escura translúcida */
+  z-index: 1;
+}
+
+/* Garante que o conteúdo fique acima da sobreposição */
+.blue-section > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* --- Header com logo + perfil --- */
+.header-content {
+  display: flex;
+  justify-content: space-between;   /* deixa logo à esquerda e perfil à direita */
+  align-items: center;
+  width: 100%;
+  max-width: 700px;                 /* largura máxima opcional */
+  margin: 0 auto;                   /* centraliza o bloco como um todo */
+  padding: 20px 0;
+}
+
+/* Logo */
+.logo {
+  width: 300px;                     /* ajuste conforme necessário */
+  max-width: 45vw;
+  border-radius: 40px;
+  cursor: pointer;
+}
+
+/* Ícone de perfil */
+.profile-icon img {
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+/* --- Título Sobre Nós --- */
+.title {
+  text-align: center;
+  color: white;
+  margin: 0 0 20px;
+}
+
+/* --- Seção de texto Sobre Nós --- */
+.about {
+  max-width: 700px;
+  margin: 40px auto;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* --- Equipe --- */
+.team {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+
+.member {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.member img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: #ddd;
+  object-fit: cover;
+}
+
+.member-name {
+  margin-top: 10px;
+  font-weight: bold;
+}

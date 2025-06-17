@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sobre Nós</title>
+  <link rel="stylesheet" href="../css/sobreNos.css" />
+</head>
+<body>
+  <div class="aboutUs">
+
+    <!-- Seção azul de topo -->
+    <section class="blue-section">
+      <div class="header-content">
+        <!-- Logo -->
+        <a href="../html/home.html">
+          <img src="../assets/Logo2 (1).png" alt="Logo Filabão" class="logo" />
+        </a>
+
+        <!-- Perfil -->
+        <div class="profile-icon" onclick="irParaLogin()">
+          <a href="../html/accont.html">
+            <img src="../assets/perfil.png" alt="Perfil" />
+          </a>
+        </div>
+      </div>
+
+      <!-- Título centralizado -->
+      <h1 class="title">SOBRE NÓS</h1>
+    </section>
+
+    <!-- Seção Sobre Nós -->
+    <section class="about">
+      <p>
+        Somos um grupo apaixonado por tecnologia, cultura e festas juninas! Este projeto é fruto do nosso
+        trabalho em equipe, criatividade e muita dedicação. Esperamos que você sinta a alegria do São João em
+        cada detalhe desta plataforma.
+      </p>
+
+      <!-- Equipe -->
+      <div class="team">
+        <div class="member">
+          <img src="../assets/picrewLua.png" alt="Integrante Lua" />
+          <div class="member-name">Lua</div>
+        </div>
+        <div class="member">
+          <img src="../assets/eu-removebg-preview.png" alt="Integrante Ana" />
+          <div class="member-name">Ana</div>
+        </div>
+        <div class="member">
+          <img src="../assets/picrewMia.png" alt="Integrante Mia" />
+          <div class="member-name">Mia</div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    function irParaLogin() {
+      window.location.href = 'login.html';
+    }
+  </script>
+</body>
+</html>

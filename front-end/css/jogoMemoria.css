@@ -1,0 +1,74 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.memory-game-page {
+  margin: 0;
+  padding: 0;
+  background: #f8e9d3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+}
+
+h1 {
+  font-family: "Nunito", sans-serif;
+  font-weight: 400;
+  font-size: 5vw;
+  margin: 20px;
+  color: #4b2e2e;
+  text-align: center;
+}
+
+.menu {
+  margin-bottom: 20px;
+}
+
+select {
+  padding: 1em;
+  font-size: 1em;
+  border-radius: 8px;
+  border: 1px solid #f7d180;
+}
+
+.game {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+  gap: 10px;
+  justify-content: center;
+  width: 90vw;
+  max-width: 800px;
+  margin-bottom: 40px;
+}
+
+.card {
+  aspect-ratio: 1 / 1;
+  background-color: #4f6c7f;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: clamp(1rem, 4vw, 2rem);
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.2s;
+  color: transparent;
+}
+
+.card.flip,
+.card.matched {
+  background-color: #fff;
+  color: black;
+}
+
+.card.flip {
+  transform: rotateY(180deg);
+}
+
+.card.matched {
+  background-color: #a8e6cf;
+  pointer-events: none;
+}
